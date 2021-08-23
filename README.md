@@ -17,6 +17,6 @@ The project was written in **R script** using the following packages
 
 ## Repository Folders
 
-**input** - Contains the input files of the executive functions battery and the Overwatch proficiency questionnaire
+**input** - Contains the input files of the executive functions battery and the Overwatch proficiency questionnaire.
 
-**output** - Contains the output files of the data during the cleaning process
+**output** - Contains the output files of the data during the cleaning process as well as outputs of the statistical analyses.
