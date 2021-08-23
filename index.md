@@ -53,7 +53,7 @@ Executive function data was downloaded from tatool.web and the Overwatch profici
 - This continuous variable represents the peak skill rating a participant has reached during their time playing Overwatch.
 - Variable can be any integer from 500 to 5000
 
-### Hours
+### Total Hours
 - This continuous variable represents the total number of hours a participant has spent playing Overwatch.
 - Variable can be any integer from 0 to 100000.
 
@@ -103,5 +103,22 @@ Executive function data was downloaded from tatool.web and the Overwatch profici
 - This qualitative variable represents the race of the participant.
 - Variable is a text box so it can contain any combination of letters.
 
+## Z transformed variables
 
+### zCSR
+- This variable is the Z transformation of current SR
 
+### zAGE
+- This variable is the Z transformation of age
+
+### zSES
+- This variable is the Z transformation of SES
+
+### zEDU
+- This variable is the Z transformation of education code
+
+### zTH
+- This variable is the Z transformation of total hours
+
+### zWH
+- This variable is the Z transformation of weekly hours 

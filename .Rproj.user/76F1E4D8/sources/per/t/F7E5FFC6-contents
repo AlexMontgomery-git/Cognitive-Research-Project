@@ -40,6 +40,11 @@ PROFlm <- lm(currentsr ~ zTH + level + league, data=cleandf)
 
 summary(PROFlm)
 
+#save output
+stargazer(PROFlm, type="text",
+          dep.var.labels=c("Current SR"),
+          covariate.labels=c("Total Hours", "Level", "League"), out="Proficiency Regression.txt")
+
 
 ## CURRENT SR ##
 ################
@@ -49,16 +54,30 @@ UPDlm <- lm(updatingaccuracy ~ zCSR + zAGE + zSES + zEDU, data=cleandf)
 
 summary(UPDlm)
 
+#save output
+stargazer(UPDlm, type="text",
+          dep.var.labels=c("Updating Accuracy"),
+          covariate.labels=c("Current SR", "Age", "SES", "Education"), out="Current SR - Updating Regression.txt")
+
 #inhibition regression
 INHlm <- lm(RTinterference ~ zCSR + zAGE + zSES + zEDU, data=cleandf)
 
 summary(INHlm)
+
+#save output
+stargazer(INHlm, type="text",
+          dep.var.labels=c("RT Interference"),
+          covariate.labels=c("Current SR", "Age", "SES", "Education"), out="Current SR - Inhibition Regression.txt")
 
 #shifting regression
 SHIlm <- lm(switchCosts ~ zCSR + zAGE + zSES + zEDU, data=cleandf)
 
 summary(SHIlm)
 
+#save output
+stargazer(SHIlm, type="text",
+          dep.var.labels=c("Switch Costs"),
+          covariate.labels=c("Current SR", "Age", "SES", "Education"), out="Current SR - Shifting Regression.txt")
 
 ## TOTAL HOURS ##
 #################
@@ -68,15 +87,30 @@ THUPDlm <- lm(updatingaccuracy ~ zTH + zAGE + zSES + zEDU, data=cleandf)
 
 summary(THUPDlm)
 
+#save output
+stargazer(THUPDlm, type="text",
+          dep.var.labels=c("Updating Accuracy"),
+          covariate.labels=c("Total Hours", "Age", "SES", "Education"), out="Total Hours - Updating Regression.txt")
+
 #inhibition regression
 THINHlm <- lm(RTinterference ~ zTH + zAGE + zSES + zEDU, data=cleandf)
 
 summary(THINHlm)
 
+#save output
+stargazer(THINHlm, type="text",
+          dep.var.labels=c("RT Interference"),
+          covariate.labels=c("Total Hours", "Age", "SES", "Education"), out="Total Hours - Inhibition Regression.txt")
+
 #shifting regression
 THSHIlm <- lm(switchCosts ~ zTH + zAGE + zSES + zEDU, data=cleandf)
 
 summary(THSHIlm)
+
+#save output
+stargazer(THSHIlm, type="text",
+          dep.var.labels=c("Switch Costs"),
+          covariate.labels=c("Total Hours", "Age", "SES", "Education"), out="Total Hours - Shifting Regression.txt")
 
 
 #subset different classes
@@ -97,15 +131,30 @@ DUPDlm <- lm(updatingaccuracy ~ zCSR + zAGE + zSES + zEDU, data=damagedf)
 
 summary(DUPDlm)
 
+#save output
+stargazer(DUPDlm, type="text",
+          dep.var.labels=c("Updating Accuracy"),
+          covariate.labels=c("Current SR", "Age", "SES", "Education"), out="Damage - Updating Regression.txt")
+
 #inhibition regression
 DINHlm <- lm(RTinterference ~ zCSR + zAGE + zSES + zEDU, data=damagedf)
 
 summary(DINHlm)
 
+#save output
+stargazer(DINHlm, type="text",
+          dep.var.labels=c("RT Interference"),
+          covariate.labels=c("Current SR", "Age", "SES", "Education"), out="Damage - Inhibition Regression.txt")
+
 #shifting regression
 DSHIlm <- lm(switchCosts ~ zCSR + zAGE + zSES + zEDU, data=damagedf)
 
 summary(DSHIlm)
+
+#save output
+stargazer(DSHIlm, type="text",
+          dep.var.labels=c("Switch Costs"),
+          covariate.labels=c("Current SR", "Age", "SES", "Education"), out="Damage - Shifting Regression.txt")
 
 ## SUPPORT ##
 #############
@@ -115,15 +164,30 @@ SUPDlm <- lm(updatingaccuracy ~ zCSR + zAGE + zSES + zEDU, data=supportdf)
 
 summary(SUPDlm)
 
+#save output
+stargazer(SUPDlm, type="text",
+          dep.var.labels=c("Updating Accuracy"),
+          covariate.labels=c("Current SR", "Age", "SES", "Education"), out="Support - Updating Regression.txt")
+
 #inhibition regression
 SINHlm <- lm(RTinterference ~ zCSR + zAGE + zSES + zEDU, data=supportdf)
 
 summary(SINHlm)
 
+#save output
+stargazer(SINHlm, type="text",
+          dep.var.labels=c("RT Interference"),
+          covariate.labels=c("Current SR", "Age", "SES", "Education"), out="Support - Inhibition Regression.txt")
+
 #shifting regression
 SSHIlm <- lm(switchCosts ~ zCSR + zAGE + zSES + zEDU, data=supportdf)
 
 summary(SSHIlm)
+
+#save output
+stargazer(SSHIlm, type="text",
+          dep.var.labels=c("Switch Costs"),
+          covariate.labels=c("Current SR", "Age", "SES", "Education"), out="Support - Shifting Regression.txt")
 
 ## TANK ##
 ##########
@@ -133,16 +197,29 @@ TUPDlm <- lm(updatingaccuracy ~ zCSR + zAGE + zSES + zEDU, data=tankdf)
 
 summary(TUPDlm)
 
+#save output
+stargazer(TUPDlm, type="text",
+          dep.var.labels=c("Updating Accuracy"),
+          covariate.labels=c("Current SR", "Age", "SES", "Education"), out="Tank - Updating Regression.txt")
+
 #inhibition regression
 TINHlm <- lm(RTinterference ~ zCSR + zAGE + zSES + zEDU, data=tankdf)
 
 summary(TINHlm)
+
+#save output
+stargazer(TINHlm, type="text",
+          dep.var.labels=c("RT Interference"),
+          covariate.labels=c("Current SR", "Age", "SES", "Education"), out="Tank - Inhibition Regression.txt")
 
 #shifting regression
 TSHIlm <- lm(switchCosts ~ zCSR + zAGE + zSES + zEDU, data=tankdf)
 
 summary(TSHIlm)
 
-
+#save output
+stargazer(TSHIlm, type="text",
+          dep.var.labels=c("Switch Costs"),
+          covariate.labels=c("Current SR", "Age", "SES", "Education"), out="Tank - Shifting Regression.txt")
 
 

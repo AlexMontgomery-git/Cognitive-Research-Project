@@ -5,6 +5,7 @@ set.seed(1234321)
 library(tidyverse)
 library(corrplot)
 library(pastecs)
+library(stargazer)
 
 
 # clear workspace
