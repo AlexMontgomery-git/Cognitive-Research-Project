@@ -1,7 +1,7 @@
 {
     "id": "2AFD0224",
-    "path": "C:/Users/monty/OneDrive/Desktop/Masters/github repos/Cognitive-Research-Project/codebook.Rmd",
-    "project_path": "codebook.Rmd",
+    "path": "C:/Users/monty/OneDrive/Desktop/Masters/github repos/Cognitive-Research-Project/index.Rmd",
+    "project_path": "index.Rmd",
     "type": "r_markdown",
     "hash": "0",
     "contents": "",
@@ -11,15 +11,15 @@
     "relative_order": 11,
     "properties": {
         "tempName": "Untitled1",
-        "cursorPosition": "34,155",
+        "cursorPosition": "35,22",
         "scrollLine": "29"
     },
     "folds": "",
-    "lastKnownWriteTime": 1629738874,
+    "lastKnownWriteTime": 1629739749,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1629738874237,
+    "last_content_update": 1629739749095,
     "read_only": false,
     "read_only_alternatives": []
 }
