@@ -6,6 +6,7 @@ library(tidyverse)
 library(corrplot)
 library(pastecs)
 
+
 # clear workspace
 rm(list=ls()) 
 
@@ -51,5 +52,85 @@ source(paste(workspace, "overwatch_04_clean.R", sep = "/"))
 source(paste(workspace, "overwatch_05_analysis.R", sep = "/"))
 
 
-###################################### add the summarys for the regressions at the bottom here
+##########################################################
+##                ANALYSIS SUMMARIES                    ##
+##########################################################
 
+#descriptive statistics
+stat.desc(cleandf)
+table(cleandf$level)
+table(cleandf$league)
+table(cleandf$class)
+table(cleandf$gender)
+table(cleandf$country)
+table(cleandf$race)
+table(cleandf$education)
+
+#proficiency evidence regression
+summary(PROFlm)
+
+
+#regressions for whole sample
+
+##  CURRENT SR  ##
+##################
+
+#updating regression
+summary(UPDlm)
+
+#inhibition regression 
+summary(INHlm)
+
+#shifting regression 
+summary(SHIlm)
+
+## TOTAL HOURS ##
+#################
+
+#updating regression
+summary(THUPDlm)
+
+#inhibition regression
+summary(THINHlm)
+
+#shifting regression
+summary(THSHIlm)
+
+
+#regressions for separate classes
+
+## DAMAGE ##
+############
+
+#updating regression
+summary(DUPDlm)
+
+#inhibition regression
+summary(DINHlm)
+
+#shifting regression
+summary(DSHIlm)
+
+## SUPPORT ##
+#############
+
+#updating regression
+summary(SUPDlm)
+
+#inhibition regression
+summary(SINHlm)
+
+#shifting regression
+summary(SSHIlm)
+
+## TANK ##
+##########
+
+#updating regression
+summary(TUPDlm)
+
+#inhibition regression
+summary(TINHlm)
+
+#shifting regression
+summary(TSHIlm)

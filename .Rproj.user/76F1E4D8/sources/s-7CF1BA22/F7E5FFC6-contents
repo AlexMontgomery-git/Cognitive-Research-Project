@@ -4,11 +4,16 @@
 
 #descriptive statistics
 stat.desc(cleandf)
+table(cleandf$level)
+table(cleandf$league)
 table(cleandf$gender)
+table(cleandf$country)
+table(cleandf$race)
+table(cleandf$education)
 
 
 #correlation matrix
-cormat <- cleandf %>% select(3, 8, 9, 11, 12, 14, 15, 22, 25, 27, 30)
+cormat <- cleandf %>% select(3, 8, 11, 12, 14, 15, 22, 25, 27, 30)
 
 source("http://www.sthda.com/upload/rquery_cormat.r")
 
@@ -25,7 +30,10 @@ cleandf$zEDU <- (cleandf$educationcode - mean(cleandf$educationcode))/sd(cleandf
 
 cleandf$zTH <- (cleandf$totalhours - mean(cleandf$totalhours))/sd(cleandf$totalhours)
 
+cleandf$zWH <- (cleandf$weeklyhours - mean(cleandf$weeklyhours))/sd(cleandf$weeklyhours)
 
+#write cleandf
+write.table(cleandf, file = paste(outputFolder, "cleanData.csv", sep = "/"), sep = ",", row.names = FALSE)
 
 #proficiency evidence regression
 PROFlm <- lm(currentsr ~ zTH + level + league, data=cleandf)
@@ -33,8 +41,8 @@ PROFlm <- lm(currentsr ~ zTH + level + league, data=cleandf)
 summary(PROFlm)
 
 
-## ALL ##
-#########
+## CURRENT SR ##
+################
 
 #updating regression
 UPDlm <- lm(updatingaccuracy ~ zCSR + zAGE + zSES + zEDU, data=cleandf)
@@ -51,36 +59,37 @@ SHIlm <- lm(switchCosts ~ zCSR + zAGE + zSES + zEDU, data=cleandf)
 
 summary(SHIlm)
 
-#standardised effect sizes or scale variables 
 
-
-## WITHOUT CONTROLS ##
-######################
+## TOTAL HOURS ##
+#################
 
 #updating regression
-NOCUPDlm <- lm(updatingaccuracy ~ zCSR, data=cleandf)
+THUPDlm <- lm(updatingaccuracy ~ zTH + zAGE + zSES + zEDU, data=cleandf)
 
-summary(NOCUPDlm)
+summary(THUPDlm)
 
 #inhibition regression
-NOCINHlm <- lm(RTinterference ~ zCSR, data=cleandf)
+THINHlm <- lm(RTinterference ~ zTH + zAGE + zSES + zEDU, data=cleandf)
 
-summary(NOCINHlm)
+summary(THINHlm)
 
 #shifting regression
-NOCSHIlm <- lm(switchCosts ~ zCSR, data=cleandf)
+THSHIlm <- lm(switchCosts ~ zTH + zAGE + zSES + zEDU, data=cleandf)
 
-summary(NOCSHIlm)
+summary(THSHIlm)
 
 
 #subset different classes
 tankdf <- subset(cleandf, class == "Tank")
+write.table(tankdf, file = paste(outputFolder, "tankData.csv", sep = "/"), sep = ",", row.names = FALSE)
 
 supportdf <- subset(cleandf, class == "Support")
+write.table(supportdf, file = paste(outputFolder, "supportData.csv", sep = "/"), sep = ",", row.names = FALSE)
 
 damagedf <- subset(cleandf, class == "Damage")
+write.table(damagedf, file = paste(outputFolder, "damageData.csv", sep = "/"), sep = ",", row.names = FALSE)
 
-## DAMAGE ###########################################################################    Write other data
+## DAMAGE ##
 ############
 
 #updating regression

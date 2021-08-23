@@ -69,6 +69,7 @@ cleandf <- subset(cleandf, userCode != 138520)
 cleandf <- subset(cleandf, userCode != 138563)
 cleandf <- subset(cleandf, userCode != 138694)
 cleandf <- subset(cleandf, userCode != 138695)
+cleandf <- subset(cleandf, userCode != 139371)
 
 
 #calculate mahalanobis distance

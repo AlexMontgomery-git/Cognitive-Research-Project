@@ -1,0 +1,101 @@
+library(tidyverse)
+library(lavaan)
+library(tidySEM)
+library(semTools)
+library(lme4)
+library(lmerTest)
+
+#Study 1
+
+lm1 <- lm(ToddlerVocab ~ MotherVocab+FatherVocab+ReadingTime*SES, data=Lexicon)
+
+summary(lm1)
+
+p<-ggplot(Lexicon, aes(ReadingTime, ToddlerVocab, color=SES,frame=SES))+geom_point()
+plotly::ggplotly(p)
+
+#Study 2
+
+model1 <- '
+ReadingComprehension~e*VerbalAbility+c*ReadingTime+b*ToddlerVocab
+ToddlerVocab~d*VerbalAbility+a*ReadingTime
+ReadingTime~k*VerbalAbility
+
+#Quantifiation of effects
+dirnur := c
+indnur := a*b
+totnur := dirnur + indnur
+
+dirnat := e
+indnat := d*b
+totnat := dirnat + indnat'
+
+fit1 <- sem(model1, data = Lexicon)
+summary(fit1,  fit.measures=TRUE)
+inspect(fit1, 'r2')
+
+model2 <- '
+ReadingComprehension~e*VerbalAbility+c*ReadingTime+b*ToddlerVocab
+ToddlerVocab~a*ReadingTime
+ReadingTime~k*VerbalAbility'
+
+fit2 <- sem(model2, data = Lexicon)
+summary(fit2, fit.measures=TRUE)
+inspect(fit2, 'r2')
+
+diff <- compareFit(fit1, fit2)
+summary(diff)
+
+#Study 3
+
+#Final model
+glm1 <- glm(Enrollment~SES+ReadingTime+ToddlerVocab, data = Lexicon, family = binomial(link='logit'))
+
+summary(glm1)
+
+#Calculate odds ratio
+exp(glm1$coefficients)
+
+with(glm1, pchisq(null.deviance - deviance, df.null - df.residual, lower.tail = FALSE))
+#New model with only ReadingTime as the predictor
+glm2 <- glm(Enrollment~ReadingTime, data = Lexicon, family = binomial(link='logit'))
+
+summary(glm2)
+
+#Calculating probabilities of enrollment for different ReadingTime scores
+1/(1+exp(2.468147 - 0.022644*40.064))
+
+1/(1+exp(2.468147 - 0.022644*148.35))
+
+confint(glm1)
+
+#Study 4
+
+cfa1 <- '
+RuleAutomation =~ NA*Phonetics + Orthography + Morphology
+FineExpertise =~ NA*Syntax + Semantics + Pragmatics
+RuleAutomation ~~ 1*RuleAutomation
+FineExpertise ~~ 1*FineExpertise
+'
+
+cfafit <- cfa(cfa1, data = Lexicon)
+
+summary(cfafit, standardized = TRUE, fit.measures=TRUE)
+
+cfafit2 <- cfa(cfa1, data = Lexicon, group = 'SES')
+
+cfafit3 <- cfa(cfa1, data = Lexicon, group = 'SES', group.equal = 'loadings')
+
+summary(compareFit(cfafit2, cfafit3))
+
+#Study 5
+
+lme1 <- lmer(RT~WordType+ReadingTime+ToddlerVocab+(1|ID), data = LexicalDec)
+summary(lme1)
+
+lme2 <- lmer(RT~WordType+ReadingTime+ToddlerVocab+(1+WordType|ID), data = LexicalDec)
+summary(lme2)
+
+anova(lme1,lme2)
+
+ranef(lme1)
