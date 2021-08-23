@@ -15,4 +15,4 @@ The project was written in **R script** using the following packages
 
 **input** - Contains the input files of the executive functions battery and the Overwatch proficiency questionnaire
 
-**output** - Contains the outfiles of the data during the cleaning process
+**output** - Contains the output files of the data during the cleaning process
