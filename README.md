@@ -14,6 +14,7 @@ The project was written in **R script** using the following packages
 - tidyverse version 1.3.0
 - corrplot version 0.90
 - pastecs version 1.3.21
+- stargazer version 5.2.2
 
 ## Repository Folders
 
