@@ -6,6 +6,8 @@ A repository for my disseration analysis code.
 
 ## Project Details
 
+Code to process the raw data from the input folder is included in this repository. The R files are seperated into 5 different R scripts. Running the master script will run the remaining R scripts and this will process all the data. Summaries of the analyses can be observed by running the summary code at the bottom of the master file.
+
 The project was written in **R script** using the following packages
 - tidyverse version 1.3.0
 - corrplot version 0.90
